@@ -110,8 +110,11 @@ Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200
            engine = create_engine('postgresql://catalog:password@localhost/catalog')
 
  ### Step13: Update the google OAuth settings
-     Fill in the client_id and client_secret fields in the file client_secrets.json. Also change the javascript_origins            field to the IP address and AWS assigned URL of the host.In this instance that would be: "javascript_origins":                ["http://ec2-13-126-105-117.ap-south-1.compute.amazonaws.com"]
-     These addresses also need to be entered into the Google Developers Console --> API Manager -->Credentials in web              client under "Authorized Javascript origins".
+     Fill in the client_id and client_secret fields in the file client_secrets.json. Also change the 
+     javascript_origins field to the IP address and AWS assigned URL of the host.In this instance that would 
+     be: "javascript_origins":["http://ec2-13-126-105-117.ap-south-1.compute.amazonaws.com"].These addresses 
+     also need to be entered into the Google Developers Console --> API Manager -->Credentials in web client 
+     under "Authorized Javascript origins".
 
 ### Step14: Initialize the database schema and populate the database. 
           $ cd /var/www/catalog/catalog/
