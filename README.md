@@ -127,8 +127,8 @@ Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200
     Add the following lines and save
 
     <VirtualHost *:80>
-        ServerName 35.154.231.1
-        ServerAdmin itasaini68@gmail.com
+        ServerName 13.126.105.117
+        ServerAdmin taranvir.554@gmail.com
         WSGIScriptAlias / /var/www/catalog/catalog.wsgi
         <Directory /var/www/catalog/>
             Order allow,deny
