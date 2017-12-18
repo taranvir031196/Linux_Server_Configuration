@@ -124,7 +124,7 @@ Source : https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys
     $ python lots_of_menu.py
           
 ### Step16: Configure apache2 to serve the app
-     $  sudo nano /etc/apache2/sites-available/000-default.conf
+    $  sudo nano /etc/apache2/sites-available/000-default.conf
 
     Add the following lines and save:
     
