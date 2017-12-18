@@ -9,13 +9,13 @@ Installation of a Linux distribution on a virtual machine and prepare it to host
 Public IP Address : 13.126.105.117\
 SSH Port Address : 2200\
 URL : http://ec2-13-126-105-117.ap-south-1.compute.amazonaws.com \
-Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200 
+Login with -: ssh grader@13.126.105.117 -i ~/.ssh/key -p 2200 
 
 ## Server Configuration Procedure-:
 ### Step1: Create an AWS Lightsail instance. Download the private key to your local machine.
 * Development Environment Information Details-:
-	* Public IP Address : 13.126.105.117 \
-	  Private Key : Can't be shared
+	 * Public IP Address : 13.126.105.117 \
+	   Private Key : Can't be shared
 		
 ### Step2: SSH into the the server 
 1. Move the private key downloaded earlier into the .ssh Folder.
@@ -35,8 +35,9 @@ Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200
     Copy the contents of the .pub file to the virtual machine
     $ nano /home/grader/.ssh/authorized_keys
     Now, we are able to login to the lightsail instance by :
-    ssh grader@13.126.105.117  -i ~/.ssh/key
-    Source : https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+    ssh grader@13.126.105.117 -i ~/.ssh/key
+    
+Source : https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
     
 ### Step5: Change SSH port to 2200
     $ sudo nano /etc/ssh/sshd_config
@@ -46,14 +47,15 @@ Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200
     $ sudo service ssh restart
     Now ssh into instance using grader user using the command-:
     ssh grader@13.126.105.117 -i ~/.ssh/key -p 2200
-    Change timezone to UTC using 
+    
+### Step6: Change timezone to UTC using the command: 
     $ sudo timedatectl set-timezone UTC
 
-### Step6: Update and upgrade all packages
+### Step7: Update and upgrade all packages
     $ sudo apt-get update
     $ sudo apt-get upgrade
     
-### Step7: Configure the firewall(UFW) using the consecutive commands
+### Step8: Configure the firewall(UFW) using the consecutive commands
     $ sudo ufw default deny incoming
     $ sudo ufw default allow outgoing
     $ sudo ufw allow 2200/tcp
@@ -61,11 +63,11 @@ Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200
     $ sudo ufw allow ntp
     $ sudo ufw enable
     
-### Step8: Install apache2, mod-wsgi and git
+### Step9: Install apache2, mod-wsgi and git
     $ sudo apt-get install apache2 libapache2-mod-wsgi git
     $ sudo a2enmod wsgi
     
-### Step9: Install and configure PostgreSQL
+### Step10: Install and configure PostgreSQL
     1. Installing python dependencies and PostgreSQL
         $ sudo apt-get install libpq-dev python-dev
         $ sudo apt-get install postgresql postgresql-contrib
@@ -82,17 +84,17 @@ Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200
           \q
         $ exit
           
-### Step10: Install Flask by use of the following commands:
+### Step11: Install Flask by use of the following commands:
            $ sudo apt-get install python-pip
            $ sudo pip install Flask
            $ sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils
            
-### Step11: Clone the Item catalog project/application from your github repository
+### Step12: Clone the Item catalog project/application from your github repository
            $ sudo mkdir /var/www/catalog
            $ sudo chown -R grader:grader /var/www/catalog
            $ git clone https://github.com/taranvir031196/Item_Catalog_project.git /var/www/catalog/catalog
            
-### Step12: Make a catalog.wsgi file
+### Step13: Make a catalog.wsgi file
         1. $ cd /var/www/catalog
            $ touch catalog.wsgi && nano catalog.wsgi
         2. Add the following lines and save the file.
@@ -109,23 +111,23 @@ Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200
            Change engine = create_engine('sqlite:///restaurantmenuwithusers.db') to
            engine = create_engine('postgresql://catalog:password@localhost/catalog')
 
- ### Step13: Update the google OAuth settings
+### Step14: Update the google OAuth settings
      Fill in the client_id and client_secret fields in the file client_secrets.json. Also change the 
      javascript_origins field to the IP address and AWS assigned URL of the host.In this instance that would 
      be: "javascript_origins":["http://ec2-13-126-105-117.ap-south-1.compute.amazonaws.com"].These addresses 
      also need to be entered into the Google Developers Console --> API Manager -->Credentials in web client 
      under "Authorized Javascript origins".
 
-### Step14: Initialize the database schema and populate the database. 
+### Step15: Initialize the database schema and populate the database. 
           $ cd /var/www/catalog/catalog/
           $ python database_setup.py
           $ python lots_of_menu.py
           
-### Step15: Configure apache2 to serve the app
+### Step16: Configure apache2 to serve the app
      $  sudo nano /etc/apache2/sites-available/000-default.conf
 
-    Add the following lines and save
-
+    Add the following lines and save:
+    
     <VirtualHost *:80>
         ServerName 13.126.105.117
         ServerAdmin taranvir.554@gmail.com
@@ -144,8 +146,8 @@ Login with -: ssh grader@13.126.105.117  -i ~/.ssh/key -p 2200
         CustomLog ${APACHE_LOG_DIR}/access.log combined
     </VirtualHost>
     
-### Step16: Restart apache to launch the application!!!
-          $ sudo service apache2 restart
+### Step17: Restart apache to launch the application!!!
+    $ sudo service apache2 restart
           
 Source:  https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
          
