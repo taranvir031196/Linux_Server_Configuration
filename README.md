@@ -85,19 +85,19 @@ Source : https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys
         $ exit
           
 ### Step11: Install Flask by use of the following commands:
-           $ sudo apt-get install python-pip
-           $ sudo pip install Flask
-           $ sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils
+    $ sudo apt-get install python-pip
+    $ sudo pip install Flask
+    $ sudo pip install httplib2 oauth2client sqlalchemy psycopg2 sqlalchemy_utils
            
 ### Step12: Clone the Item catalog project/application from your github repository
-           $ sudo mkdir /var/www/catalog
-           $ sudo chown -R grader:grader /var/www/catalog
-           $ git clone https://github.com/taranvir031196/Item_Catalog_project.git /var/www/catalog/catalog
+    $ sudo mkdir /var/www/catalog
+    $ sudo chown -R grader:grader /var/www/catalog
+    $ git clone https://github.com/taranvir031196/Item_Catalog_project.git /var/www/catalog/catalog
            
 ### Step13: Make a catalog.wsgi file
-        1. $ cd /var/www/catalog
+    1. $ cd /var/www/catalog
            $ touch catalog.wsgi && nano catalog.wsgi
-        2. Add the following lines and save the file.
+    2. Add the following lines and save the file.
            import sys
            import logging
            logging.basicConfig(stream=sys.stderr)
@@ -106,8 +106,8 @@ Source : https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys
            from Item_Catalog import app as application
            application.secret_key = 'super_secret_key'
            
-        3. Inside the files project.py, database_setup.py, lotsofmenus.py make the following changes for
-           correct database connection :
+     3. Inside the files project.py, database_setup.py, lotsofmenus.py make the following changes for
+        correct database connection :
            Change engine = create_engine('sqlite:///restaurantmenuwithusers.db') to
            engine = create_engine('postgresql://catalog:password@localhost/catalog')
 
@@ -119,9 +119,9 @@ Source : https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys
      under "Authorized Javascript origins".
 
 ### Step15: Initialize the database schema and populate the database. 
-          $ cd /var/www/catalog/catalog/
-          $ python database_setup.py
-          $ python lots_of_menu.py
+    $ cd /var/www/catalog/catalog/
+    $ python database_setup.py
+    $ python lots_of_menu.py
           
 ### Step16: Configure apache2 to serve the app
      $  sudo nano /etc/apache2/sites-available/000-default.conf
