@@ -8,7 +8,7 @@ Installation of a Linux distribution on a virtual machine and prepare it to host
 ## Important Server Details: 
    Public IP Address : 13.126.105.117\
    SSH Port Address : 2200\
-   URL : http://ec2-13-126-105-117.ap-south-1.compute.amazonaws.com \ 
+   URL : http://ec2-13-126-105-117.ap-south-1.compute.amazonaws.com  
    Login with -: ssh grader@13.126.105.117 -i ~/.ssh/key -p 2200 
 
 ## Server Configuration Procedure-:
