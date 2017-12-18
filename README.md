@@ -6,22 +6,22 @@ A baseline installation of a Linux distribution on a virtual machine and prepare
 Installation of a Linux distribution on a virtual machine and prepare it to host your web application(Item Catalog). It includes installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
 
 ## Important Server Details: 
-Public IP Address : 13.126.105.117\
-SSH Port Address : 2200\
-URL : http://ec2-13-126-105-117.ap-south-1.compute.amazonaws.com \
-Login with -: ssh grader@13.126.105.117 -i ~/.ssh/key -p 2200 
+    Public IP Address : 13.126.105.117\
+    SSH Port Address : 2200\
+    URL : http://ec2-13-126-105-117.ap-south-1.compute.amazonaws.com \
+    Login with -: ssh grader@13.126.105.117 -i ~/.ssh/key -p 2200 
 
 ## Server Configuration Procedure-:
 ### Step1: Create an AWS Lightsail instance. Download the private key to your local machine.
-* Development Environment Information Details-:
+    * Development Environment Information Details-:
 	 * Public IP Address : 13.126.105.117 \
 	   Private Key : Can't be shared
 		
 ### Step2: SSH into the the server 
-1. Move the private key downloaded earlier into the .ssh Folder.
-2. Apply the owner rights over the private key using the command-:
+    1. Move the private key downloaded earlier into the .ssh Folder.
+    2. Apply the owner rights over the private key using the command-:
 	    $ chmod 600 .ssh/LightsailDefaultPrivateKey-ap-south-1.pem
-3. SSH into the instance
+    3. SSH into the instance
         $ ssh ubuntu@13.126.105.117 -i ~/.ssh/LightsailDefaultPrivateKey-ap-south-1.pem
     * Make sure you have a good and a stable internet connection to ssh into the server otherwise the connection would be broken.
     
